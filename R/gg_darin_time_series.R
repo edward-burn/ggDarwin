@@ -1,4 +1,4 @@
-x.axis_dates <- function(time,start,end, interval) {
+gg_darin_time_series <- function(time,start,end, interval) {
   interval1 <- base::paste0(interval," ",time)
 
   if(time =="year") {
