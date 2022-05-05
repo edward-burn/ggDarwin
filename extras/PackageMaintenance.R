@@ -4,7 +4,8 @@
 devtools::document()
 
 # create R files -----
-# usethis::use_r("gg_darwin_time_series1")
+# usethis::use_r("gg_darwin_time_series")
+usethis::use_r("gg_darwin_theme")
 
 # set up tests ----
 # usethis::use_testthat()

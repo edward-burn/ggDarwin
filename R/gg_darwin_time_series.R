@@ -18,7 +18,8 @@ gg_darwin_time_series <- function(time,start,end, interval) {
               }
             }
            }
-         }
+    }
+
   ggplot2:: scale_x_date(
   date_labels =labels,
   date_breaks = interval1,
@@ -26,3 +27,4 @@ gg_darwin_time_series <- function(time,start,end, interval) {
             end)
   )
 }
+

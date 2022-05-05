@@ -69,7 +69,8 @@ economics %>%
   gg_darwin_time_series(time="year", # Time units (day, month, week or year)
                         start=min(economics$date), # Start date
                         end=max(economics$date) , # End date
-                        interval=5) # Interval between x-axis breaks
+                        interval=5)+ # Interval between x-axis breaks
+   gg_darwin_theme()
 
 ```
 
