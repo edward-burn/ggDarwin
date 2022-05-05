@@ -1,3 +1,14 @@
+#' Title
+#'
+#' @param time placeholder
+#' @param start placeholder
+#' @param end placeholder
+#' @param interval placeholder
+#'
+#' @return placeholder
+#' @export
+#'
+#' @examples
 gg_darwin_time_series <- function(time,start,end, interval) {
   interval1 <- base::paste0(interval," ",time)
 

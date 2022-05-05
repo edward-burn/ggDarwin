@@ -22,23 +22,34 @@ The goal of ggDarwin is to ...
 
 ## Installation
 
-You can install the development version of ggDarwin from [GitHub](https://github.com/) with:
+You can install the development version of ggDarwin like so:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("edward-burn/ggDarwin")
+# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
 ```
 
 ## Example
 
-```{r}
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(ggDarwin)
 library(dplyr)
 library(ggplot2)
-library(ggDarwin)
-```
+library(lubridate)
 
 
-```{r, echo = FALSE}
+Sys.setlocale("LC_TIME", "English")
+
+# Example 1-----
+head(economics)
+
+# Information required
+time <- "year" # Time units (day, month, week or year)
+interval <- 5  # Interval between x-axis breaks
+start <- min(economics$date) # Start date
+end <- max(economics$date) # End date
+
 # Plot
 y.var <- economics$uempmed
 y.name <- "Unemployment"
@@ -50,29 +61,10 @@ economics %>%
   xlab("")+
   theme(axis.text.x = element_text(angle=90, size =9),
         axis.title.y = element_text(size = 9),
-        plot.margin=grid::unit(c(1,1,1,1), "cm"))
-
-```
-
-
-Now with gg_darwin_time_series()
-```{r, echo = FALSE}
-economics %>%
-  ggplot()+
-  geom_point(aes(date,y=y.var))+
-  geom_line(aes(date,y=y.var), size=0.8)+
-  scale_y_continuous(name= y.name)+
-  xlab("")+
-  theme(axis.text.x = element_text(angle=90, size =9),
-        axis.title.y = element_text(size = 9),
         plot.margin=grid::unit(c(1,1,1,1), "cm"))+
-  gg_darwin_time_series(time="year", # Time units (day, month, week or year)
-                        start=min(economics$date), # Start date
-                        end=max(economics$date) , # End date
-                        interval=5)+ # Interval between x-axis breaks
-   gg_darwin_theme()
+  gg_darwin_time_series(time,start,end, interval)+
+  gg_darwin_theme()
+
 
 ```
-
-
 
