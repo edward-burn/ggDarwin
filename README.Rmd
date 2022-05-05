@@ -1,0 +1,77 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# ggDarwin
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of ggDarwin is to ...
+
+## Installation
+
+You can install the development version of ggDarwin from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("edward-burn/ggDarwin")
+```
+
+## Example
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(ggDarwin)
+```
+
+
+```{r, echo = FALSE}
+# Plot
+y.var <- economics$uempmed
+y.name <- "Unemployment"
+economics %>%
+  ggplot()+
+  geom_point(aes(date,y=y.var))+
+  geom_line(aes(date,y=y.var), size=0.8)+
+  scale_y_continuous(name= y.name)+
+  xlab("")+
+  theme(axis.text.x = element_text(angle=90, size =9),
+        axis.title.y = element_text(size = 9),
+        plot.margin=grid::unit(c(1,1,1,1), "cm"))
+
+```
+
+
+Now with gg_darwin_time_series()
+```{r, echo = FALSE}
+economics %>%
+  ggplot()+
+  geom_point(aes(date,y=y.var))+
+  geom_line(aes(date,y=y.var), size=0.8)+
+  scale_y_continuous(name= y.name)+
+  xlab("")+
+  theme(axis.text.x = element_text(angle=90, size =9),
+        axis.title.y = element_text(size = 9),
+        plot.margin=grid::unit(c(1,1,1,1), "cm"))+
+  gg_darwin_time_series(time="year", # Time units (day, month, week or year)
+                        start=min(economics$date), # Start date
+                        end=max(economics$date) , # End date
+                        interval=5) # Interval between x-axis breaks
+
+```
+
+
+

@@ -23,7 +23,7 @@ economics %>%
   geom_line(aes(date,y=y.var), size=0.8)+
   scale_y_continuous(name= y.name)+
   xlab("")+
-  x.axis_dates(time,start,end, interval)+
+  gg_darwin_time_series(time,start,end, interval)+
   theme(axis.text.x = element_text(angle=90, size =9),
         axis.title.y = element_text(size = 9),
         plot.margin=grid::unit(c(1,1,1,1), "cm"))
