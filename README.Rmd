@@ -25,14 +25,15 @@ The goal of ggDarwin is to ...
 You can install the development version of ggDarwin like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+install.packages("remotes")
+remotes::install_github("edward-burn/ggDarwin")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Before ggDarwin 
 
-```{r example}
+```{r}
 library(ggDarwin)
 library(dplyr)
 library(ggplot2)
@@ -42,17 +43,31 @@ library(lubridate)
 Sys.setlocale("LC_TIME", "English")
 
 # Example 1-----
-head(economics)
 
-# Information required
+# Plot
+y.var <- economics$uempmed
+y.name <- "Unemployment"
+economics %>%
+  ggplot()+
+  geom_point(aes(date,y=y.var))+
+  geom_line(aes(date,y=y.var), size=0.8)+
+  scale_y_continuous(name= y.name)+
+  xlab("")+
+  theme(axis.text.x = element_text(angle=90, size =9),
+        axis.title.y = element_text(size = 9),
+        plot.margin=grid::unit(c(1,1,1,1), "cm"))
+
+
+```
+
+And now with ggDarwin
+
+```{r}
 time <- "year" # Time units (day, month, week or year)
 interval <- 5  # Interval between x-axis breaks
 start <- min(economics$date) # Start date
 end <- max(economics$date) # End date
 
-# Plot
-y.var <- economics$uempmed
-y.name <- "Unemployment"
 economics %>%
   ggplot()+
   geom_point(aes(date,y=y.var))+
@@ -67,4 +82,3 @@ economics %>%
 
 
 ```
-
