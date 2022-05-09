@@ -23,11 +23,9 @@ economics %>%
   geom_line(aes(date,y=y.var), size=0.8)+
   scale_y_continuous(name= y.name)+
   xlab("")+
-  theme(axis.text.x = element_text(angle=90, size =9),
-        axis.title.y = element_text(size = 9),
-        plot.margin=grid::unit(c(1,1,1,1), "cm"))+
-  gg_darwin_time_series(time,start,end, interval)+
-  gg_darwin_theme()
+  ggtitle("Time series plot")+
+  scale_x_date_darwin(time,start,end, interval)+
+  theme_darwin()
 
 # Example 2-------
 set.seed(124)
@@ -58,6 +56,6 @@ df %>%
   theme(axis.text.x = element_text(angle=90, size =9),
         axis.title.y = element_text(size = 9),
         plot.margin=grid::unit(c(1,1,1,1), "cm"))+
-  gg_darwin_time_series(time,start,end, interval)+
-  gg_darwin_theme()
+  scale_x_date_darwin(time,start,end, interval)+
+  theme_darwin()
 

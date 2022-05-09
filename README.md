@@ -25,7 +25,6 @@ Before ggDarwin
 ``` r
 library(ggDarwin)
 library(dplyr)
-#> Warning: package 'dplyr' was built under R version 4.1.3
 #> 
 #> Attaching package: 'dplyr'
 #> The following objects are masked from 'package:stats':
@@ -36,13 +35,11 @@ library(dplyr)
 #>     intersect, setdiff, setequal, union
 library(ggplot2)
 library(lubridate)
-#> Warning: package 'lubridate' was built under R version 4.1.2
 #> 
 #> Attaching package: 'lubridate'
 #> The following objects are masked from 'package:base':
 #> 
 #>     date, intersect, setdiff, union
-
 
 Sys.setlocale("LC_TIME", "English")
 #> [1] "English_United States.1252"
@@ -57,10 +54,7 @@ economics %>%
   geom_point(aes(date,y=y.var))+
   geom_line(aes(date,y=y.var), size=0.8)+
   scale_y_continuous(name= y.name)+
-  xlab("")+
-  theme(axis.text.x = element_text(angle=90, size =9),
-        axis.title.y = element_text(size = 9),
-        plot.margin=grid::unit(c(1,1,1,1), "cm"))
+  xlab("")
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
@@ -79,11 +73,8 @@ economics %>%
   geom_line(aes(date,y=y.var), size=0.8)+
   scale_y_continuous(name= y.name)+
   xlab("")+
-  theme(axis.text.x = element_text(angle=90, size =9),
-        axis.title.y = element_text(size = 9),
-        plot.margin=grid::unit(c(1,1,1,1), "cm"))+
-  gg_darwin_time_series(time,start,end, interval)+
-  gg_darwin_theme()
+  scale_x_date_darwin(time,start,end, interval)+
+  theme_darwin()
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
